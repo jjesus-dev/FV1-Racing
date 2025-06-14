@@ -1,7 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://catqskupt3hsq"]
+[gd_scene load_steps=4 format=3 uid="uid://catqskupt3hsq"]
 
+[ext_resource type="Script" uid="uid://ik18c16uig3n" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://dewk4v871ttpj" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://bgy67wpl0sx32" path="res://scenes/mob.tscn" id="2_sugp2"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_0wfyh")
+mob_scene = ExtResource("2_sugp2")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(40, 80)
+
+[node name="Mob" parent="." instance=ExtResource("2_sugp2")]
+
+[node name="TrampPosition" type="Marker2D" parent="."]
+position = Vector2(500, 100)
+
+[connection signal="hit" from="Player" to="." method="game_over"]
