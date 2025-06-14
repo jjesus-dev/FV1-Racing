@@ -1,4 +1,5 @@
 extends Area2D
+signal hit
 
 @export var speed = 400
 var screen_size
@@ -6,6 +7,7 @@ var face_to = 1
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	#hide()
 	
 func _process(delta: float) -> void:
 	var velocity = Vector2.ZERO
@@ -22,6 +24,7 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.flip_h = true
 	
 	if velocity.length() == 0:
+		velocity = velocity.normalized()
 		$AnimatedSprite2D.animation = "idle"
 		$AnimatedSprite2D.play()
 	elif velocity.length() > 0:
@@ -33,3 +36,15 @@ func _process(delta: float) -> void:
 
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
+
+# Colocar _ antes de la variable body para hacerla opcional si después la necesitamos
+func _on_body_entered(_body: Node2D) -> void:
+	hide() # Jugador desaparece después de ser golpeado
+	hit.emit()
+	$CollisionShape2D.set_deferred("disabled", true)
+
+# Resetear al jugador cuando comience una nueva carrera
+func start(myPosition):
+	position = myPosition
+	show()
+	$CollisionShape2D.disabled = false
