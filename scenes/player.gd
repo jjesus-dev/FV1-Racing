@@ -7,7 +7,7 @@ var face_to = 1
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	#hide()
+	hide()
 
 func _process(delta: float) -> void:
 	var velocity = Vector2.ZERO
@@ -17,9 +17,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= 1
 		face_to = 0
-	if Input.is_action_pressed("hurt_player"):
-		$AnimatedSprite2D.animation = "hurt"
-		$AnimatedSprite2D.play()
 
 	if face_to == 1:
 		$AnimatedSprite2D.flip_h = false

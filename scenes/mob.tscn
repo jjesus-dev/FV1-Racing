@@ -250,6 +250,7 @@ script = ExtResource("1_bsing")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_lsel1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
