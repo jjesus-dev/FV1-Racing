@@ -8,7 +8,7 @@ func show_message(text):
 	$MessageTimer.start()
 
 func show_game_over():
-	show_message("...")
+	show_message("Game Over")
 	# Espera hasta que el MessageTimer ha llegado a 0
 	await $MessageTimer.timeout
 	
@@ -20,7 +20,7 @@ func show_game_over():
 	$StartButton.show()
 
 func update_score(score):
-	$ScoreLabel.text = str(score)
+	$ScoreLabel.text = "Puntaje: " + str(score)
 
 
 func _on_start_button_pressed() -> void:
