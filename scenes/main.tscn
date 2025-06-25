@@ -39,12 +39,12 @@ wait_time = 2.0
 one_shot = true
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(40, 80)
+position = Vector2(40, 260)
 
 [node name="Mob" parent="." instance=ExtResource("2_sugp2")]
 
 [node name="TrampPosition" type="Marker2D" parent="."]
-position = Vector2(500, 100)
+position = Vector2(500, 280)
 
 [node name="HUD" parent="." instance=ExtResource("4_jyhfs")]
 
