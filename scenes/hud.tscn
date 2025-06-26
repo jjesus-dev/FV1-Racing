@@ -6,6 +6,14 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_oo0fn")
 
+[node name="LifeLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_ahhtf")
+theme_override_font_sizes/font_size = 40
+text = "Vidas: 1"
+
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5

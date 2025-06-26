@@ -7,9 +7,9 @@ var face_to = 1
 var player_size
 
 func _ready():
+	hide()
 	screen_size = get_viewport_rect().size
 	player_size = $CollisionShape2D.shape.get_rect().size
-	hide()
 
 func _process(delta: float) -> void:
 	var velocity = Vector2.ZERO
@@ -39,14 +39,14 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO + (player_size / 2), screen_size - (player_size / 2))
 
-# Colocar _ antes de la variable body para hacerla opcional si después la necesitamos
-func _on_body_entered(_body: Node2D) -> void:
-	hide() # Jugador desaparece después de ser golpeado
-	hit.emit()
-	$CollisionShape2D.set_deferred("disabled", true)
-
 # Resetear al jugador cuando comience una nueva carrera
 func start(myPosition):
 	position = myPosition
 	show()
 	$CollisionShape2D.disabled = false
+
+func _on_body_entered(_body: Node2D) -> void:
+	print("contacto")
+	hide()
+	hit.emit()
+	$CollisionShape2D.set_deferred("disabled", true)
