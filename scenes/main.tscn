@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://catqskupt3hsq"]
+[gd_scene load_steps=9 format=3 uid="uid://catqskupt3hsq"]
 
 [ext_resource type="Script" uid="uid://ik18c16uig3n" path="res://scenes/main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://dewk4v871ttpj" path="res://scenes/player.tscn" id="1_o5qli"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://jjnn5vrffs6d" path="res://scenes/hud.tscn" id="4_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://cjxdi2xhabppi" path="res://assets/2.png" id="4_tipki"]
 [ext_resource type="Texture2D" uid="uid://eb6uj214e85w" path="res://assets/4.png" id="5_85g3d"]
+[ext_resource type="PackedScene" uid="uid://3jn55uxd04jj" path="res://scenes/tramp.tscn" id="8_tipki"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_0wfyh")
@@ -44,9 +45,12 @@ position = Vector2(40, 260)
 [node name="Mob" parent="." instance=ExtResource("2_sugp2")]
 
 [node name="TrampPosition" type="Marker2D" parent="."]
-position = Vector2(500, 280)
+position = Vector2(500, 340)
 
 [node name="HUD" parent="." instance=ExtResource("4_jyhfs")]
+
+[node name="Tramp" parent="." instance=ExtResource("8_tipki")]
+position = Vector2(639, 267)
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
