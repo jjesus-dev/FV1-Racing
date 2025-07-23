@@ -5,13 +5,13 @@ var score
 
 func game_over() -> void:
 	$ScoreTimer.stop()
-	$Player.hide()
+	#$Player.hide()
 	$HUD.show_game_over()
 
 func new_game() -> void:
 	score = 0
-	$Player.start($StartPosition.position)
-	$Mob.start($TrampPosition.position)
+	#$Player.start($StartPosition.position)
+	#$Mob.start($TrampPosition.position)
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_message("¡Preparate!")

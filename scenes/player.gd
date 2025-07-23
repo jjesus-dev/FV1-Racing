@@ -1,52 +1,41 @@
-extends Area2D
-signal hit
+extends CharacterBody2D
 
-@export var speed = 400
-var screen_size
-var face_to = 1
-var player_size
+@onready var SCREEN_SIZE = get_viewport_rect().size
+@onready var PLAYER_SIZE = $CollisionShape2D.shape.get_rect().size
 
-func _ready():
-	hide()
-	screen_size = get_viewport_rect().size
-	player_size = $CollisionShape2D.shape.get_rect().size
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
 
-func _process(delta: float) -> void:
-	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-		face_to = 1
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
-		face_to = 0
 
-	if face_to == 1:
+func _physics_process(delta: float) -> void:
+	# Handle jump.
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction := Input.get_axis("move_left", "move_right")
+	if direction > 0:
 		$AnimatedSprite2D.flip_h = false
-	else:
+	elif direction < 0:
 		$AnimatedSprite2D.flip_h = true
 
-	if velocity.length() >= 0:
-		velocity = velocity.normalized() * speed
-		$AnimatedSprite2D.play()
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		$AnimatedSprite2D.play("jump")
 	else:
-		$AnimatedSprite2D.stop()
+		if direction:
+			$AnimatedSprite2D.play("run")
+		else:
+			$AnimatedSprite2D.play("idle")
 
-	if velocity.x != 0:
-		$AnimatedSprite2D.animation = "run"
+	if direction:
+		velocity.x = direction * SPEED
 	else:
-		$AnimatedSprite2D.animation = "idle"
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO + (player_size / 2), screen_size - (player_size / 2))
-
-# Resetear al jugador cuando comience una nueva carrera
-func start(myPosition):
-	position = myPosition
-	show()
-	$CollisionShape2D.disabled = false
-
-func _on_body_entered(_body: Node2D) -> void:
-	print("contacto")
-	hide()
-	hit.emit()
-	$CollisionShape2D.set_deferred("disabled", true)
+	move_and_slide()
+	
+	# Evitar que el jugador salga de la pantalla
+	position = position.clamp(Vector2.ZERO + (PLAYER_SIZE * 2), SCREEN_SIZE - (PLAYER_SIZE * 2))

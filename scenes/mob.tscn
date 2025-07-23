@@ -241,7 +241,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4are2"]
-size = Vector2(64, 64)
+size = Vector2(64, 47)
 
 [node name="Mob" type="RigidBody2D"]
 collision_mask = 0
@@ -252,8 +252,11 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_lsel1")
+frame = 4
+frame_progress = 0.632861
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8.5)
 shape = SubResource("RectangleShape2D_4are2")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
