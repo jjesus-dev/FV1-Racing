@@ -25,3 +25,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, movement_speed)
 
 	move_and_slide()
+
+# Eliminar la trampa al salir de la pantalla
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	print("Saliendo de pantalla")
+	queue_free()
