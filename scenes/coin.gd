@@ -1,5 +1,7 @@
 extends Area2D
 
+signal coin_collected(coin_value)
+
 var coin_types = {
 	"gray": 10,
 	"yellow": 20,
@@ -9,7 +11,8 @@ var coin = "red"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var random_coin = coin_types.keys().pick_random()
+	coin = random_coin
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -20,9 +23,9 @@ func _process(_delta: float) -> void:
 			$AnimatedSprite2D.play("yellow")
 		"red":
 			$AnimatedSprite2D.play("red")
-		_:
-			print("¡No hay moneda!")
 
 
-func _on_body_entered(body: Node2D) -> void:
-	print("Moneda recogida")
+func _on_body_entered(_body: Node2D) -> void:
+	print("Moneda recogida: %s (%d pts)" % [coin, coin_types[coin]])
+	coin_collected.emit(coin_types[coin])
+	queue_free()
