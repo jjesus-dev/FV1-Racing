@@ -1,9 +1,26 @@
-[gd_scene load_steps=25 format=3 uid="uid://b4iewucbynw6f"]
+[gd_scene load_steps=30 format=3 uid="uid://b4iewucbynw6f"]
 
 [ext_resource type="Script" uid="uid://71y1kbmkeuwy" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dhvhami762b2c" path="res://assets/1 Pink_Monster/Pink_Monster_Idle_4.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://dygx8rwcinn1l" path="res://assets/1 Pink_Monster/Pink_Monster_Run_6.png" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://dpa7aavvd20o7" path="res://assets/1 Pink_Monster/Pink_Monster_Jump_8.png" id="2_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://cgdq4g4gtl07y" path="res://assets/1 Pink_Monster/Pink_Monster_Hurt_4.png" id="2_tuyoq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l71n6"]
+atlas = ExtResource("2_tuyoq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke2ow"]
+atlas = ExtResource("2_tuyoq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujl30"]
+atlas = ExtResource("2_tuyoq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31cv2"]
+atlas = ExtResource("2_tuyoq")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("2_dqkch")
@@ -79,6 +96,23 @@ region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l71n6"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l71n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke2ow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujl30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31cv2")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tuyoq")
@@ -161,7 +195,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_l71n6")
-animation = &"idle"
+animation = &"hurt"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 3.4)

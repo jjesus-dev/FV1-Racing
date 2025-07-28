@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var SCREEN_SIZE = get_viewport_rect().size
 @onready var PLAYER_SIZE = $CollisionShape2D.shape.get_rect().size
 
+var is_death = false
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -23,7 +24,10 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		$AnimatedSprite2D.play("jump")
+		if is_death:
+			$AnimatedSprite2D.play("hurt")
+		else:
+			$AnimatedSprite2D.play("jump")
 	else:
 		if direction:
 			$AnimatedSprite2D.play("run")
@@ -37,5 +41,18 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
+	# Colisionar con las trampas o enemigos
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if (collider.name == "Tramp" or collider.name == "Enemy"):
+			get_attacked(collider.name)
+
 	# Evitar que el jugador salga de la pantalla
-	position = position.clamp(Vector2.ZERO + (PLAYER_SIZE * 2), SCREEN_SIZE - (PLAYER_SIZE * 2))
+	if is_death == false:
+		position = position.clamp(Vector2.ZERO + (PLAYER_SIZE * 2), SCREEN_SIZE - (PLAYER_SIZE * 2))
+
+func get_attacked(_collider_name):
+	is_death = true
+	$CollisionShape2D.queue_free()
+	print("Herido por: " + _collider_name)
