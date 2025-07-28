@@ -31,7 +31,8 @@ func _physics_process(delta: float) -> void:
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		if (collider.name == "Tramp" or collider.name == "Player"):
-			print("Choque: " + collider.name)
+			if collider.has_method("get_attacked"):
+				collider.get_attacked("Enemy")
 
 # Eliminar enemigo al salir de la pantalla
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
