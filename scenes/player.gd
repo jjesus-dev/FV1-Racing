@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
-		if (collider.name == "Tramp" or collider.name == "Enemy"):
+		if (collider.name == "Enemy" or (collider is CharacterBody2D)):
 			get_attacked(collider.name)
 
 	# Evitar que el jugador salga de la pantalla

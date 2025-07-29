@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://5b1q6i7w2hm3"]
+
+[ext_resource type="Texture2D" uid="uid://c4217bd1cyx4q" path="res://assets/2 Owlet_Monster/Owlet_Monster.png" id="1_23g6g"]
+[ext_resource type="Script" uid="uid://bklvpi3yhi4pk" path="res://scenes/background_enemy.gd" id="1_vyifx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vyifx"]
+size = Vector2(16, 26)
+
+[node name="BackgroundEnemy" type="Area2D"]
+scale = Vector2(2.2, 2.2)
+script = ExtResource("1_vyifx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_23g6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 3)
+shape = SubResource("RectangleShape2D_vyifx")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2, 1.5)
+scale = Vector2(0.8, 0.85)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
