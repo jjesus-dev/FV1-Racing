@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://jjnn5vrffs6d" path="res://scenes/hud.tscn" id="4_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://cjxdi2xhabppi" path="res://assets/2.png" id="4_tipki"]
 [ext_resource type="Texture2D" uid="uid://eb6uj214e85w" path="res://assets/4.png" id="5_85g3d"]
-[ext_resource type="PackedScene" uid="uid://c1ps4g2jwo1le" path="res://scenes/enemy.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://5b1q6i7w2hm3" path="res://scenes/background_enemy.tscn" id="6_85g3d"]
 
 [sub_resource type="Curve2D" id="Curve2D_85g3d"]
 _data = {
@@ -37,9 +37,12 @@ texture = ExtResource("3_o6xl0")
 
 [node name="BgLayer2" type="TextureRect" parent="."]
 texture_filter = 1
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 620.0
+offset_bottom = 360.0
 texture = ExtResource("4_tipki")
+
+[node name="BackgroundEnemy" parent="." instance=ExtResource("6_85g3d")]
+position = Vector2(-40, 246)
 
 [node name="BgLayer3" type="TextureRect" parent="."]
 texture_filter = 1
@@ -52,6 +55,12 @@ texture = ExtResource("5_85g3d")
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="TrampTimer" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="EnemySpawn" type="Marker2D" parent="."]
+position = Vector2(840, 150)
 
 [node name="CoinPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_85g3d")
@@ -73,13 +82,8 @@ curve = SubResource("Curve2D_tipki")
 unique_name_in_owner = true
 position = Vector2(812, 216)
 
-[node name="TrampTimer" type="Timer" parent="."]
-wait_time = 2.5
-
 [node name="HUD" parent="." instance=ExtResource("4_jyhfs")]
-
-[node name="Enemy" parent="." instance=ExtResource("9_85g3d")]
-position = Vector2(862, 138)
+visible = false
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
