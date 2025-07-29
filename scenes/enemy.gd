@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 340.0
 const JUMP_VELOCITY = -400.0
 
 
@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
-		if (collider.name == "Tramp" or collider.name == "Player"):
+		if (collider.name == "Player" or (collider is CharacterBody2D)):
 			if collider.has_method("get_attacked"):
 				collider.get_attacked("Enemy")
 

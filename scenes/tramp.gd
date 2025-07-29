@@ -28,6 +28,7 @@ func _physics_process(delta: float) -> void:
 
 # Eliminar trampa al colisionar con el enemigo
 func get_attacked(_collider_name):
+	print("Atacada por: " + _collider_name)
 	$CollisionShape2D.queue_free()
 
 # Eliminar la trampa al salir de la pantalla
