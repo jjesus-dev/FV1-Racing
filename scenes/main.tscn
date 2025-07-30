@@ -83,9 +83,7 @@ unique_name_in_owner = true
 position = Vector2(812, 216)
 
 [node name="HUD" parent="." instance=ExtResource("4_jyhfs")]
-visible = false
 
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="TrampTimer" to="." method="_on_tramp_timer_timeout"]
-[connection signal="start_game" from="HUD" to="." method="new_game"]
