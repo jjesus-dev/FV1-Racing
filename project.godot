@@ -12,7 +12,7 @@ config_version=5
 
 config/name="FV1-Racing"
 config/description="Proyecto universitario para la materia de Creación de Videojuegos."
-config/version="0.6"
+config/version="0.8"
 run/main_scene="uid://voeuy0adopqd"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://cpnisp8al0ui2"
