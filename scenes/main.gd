@@ -6,13 +6,14 @@ var tramps_count
 
 func game_over() -> void:
 	$ScoreTimer.stop()
-	#$Player.hide()
 	$HUD.show_game_over()
-	
+	print("Señal de muerte")
+
 	# Crea un timer de un solo uso y espera a que termine
 	await get_tree().create_timer(2.0).timeout
-	print("Señal de muerte")
-	get_tree().reload_current_scene()
+
+	if is_inside_tree():
+		get_tree().reload_current_scene()
 
 func spawn_tramp():
 	tramps_count += 1
