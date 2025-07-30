@@ -3,10 +3,11 @@ extends CharacterBody2D
 @onready var SCREEN_SIZE = get_viewport_rect().size
 @onready var PLAYER_SIZE = $CollisionShape2D.shape.get_rect().size
 
+signal got_killed()
+
 var is_death = false
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-
 
 func _physics_process(delta: float) -> void:
 	# Handle jump.
@@ -55,4 +56,5 @@ func _physics_process(delta: float) -> void:
 func get_attacked(_collider_name):
 	is_death = true
 	$CollisionShape2D.queue_free()
+	got_killed.emit()
 	print("Herido por: " + _collider_name)

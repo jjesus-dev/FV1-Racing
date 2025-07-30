@@ -1,0 +1,307 @@
+[gd_scene load_steps=19 format=3 uid="uid://voeuy0adopqd"]
+
+[ext_resource type="Script" uid="uid://ryygaat34rll" path="res://scenes/main_menu.gd" id="1_8ln24"]
+[ext_resource type="Texture2D" uid="uid://c2302bqefs1ib" path="res://assets/1 Pink_Monster/Pink_Monster.png" id="1_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://c4217bd1cyx4q" path="res://assets/2 Owlet_Monster/Owlet_Monster.png" id="2_wu84c"]
+[ext_resource type="FontFile" uid="uid://bmbhunr4tydfw" path="res://assets/Font/monogram.ttf" id="3_8ln24"]
+[ext_resource type="Texture2D" uid="uid://83ojscyk58ds" path="res://assets/6.png" id="3_wu84c"]
+[ext_resource type="Texture2D" uid="uid://d1rthksmejify" path="res://assets/Keys/ARROWUP.png" id="6_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://bj2jr17rklreo" path="res://assets/Keys/W.png" id="7_flqon"]
+[ext_resource type="Texture2D" uid="uid://kmudinr4c7l0" path="res://assets/Keys/ARROWLEFT.png" id="8_rcqid"]
+[ext_resource type="Texture2D" uid="uid://dlklqicjlxsu6" path="res://assets/Keys/A.png" id="9_1ajci"]
+[ext_resource type="Texture2D" uid="uid://dy5nrlqbi2oyk" path="res://assets/Keys/ARROWRIGHT.png" id="10_7b55j"]
+[ext_resource type="Texture2D" uid="uid://st0cwh16213j" path="res://assets/Keys/D.png" id="11_5pajh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wu84c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ln24"]
+bg_color = Color(0, 0.790061, 0.826945, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtw2f"]
+bg_color = Color(0, 0.231373, 0.407843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
+bg_color = Color(0, 0.576471, 0.839216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa1go"]
+bg_color = Color(0.900103, 0.570988, 0.0351959, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbmy8"]
+bg_color = Color(0.92549, 0.215686, 0.258824, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jk1qb"]
+bg_color = Color(0.988235, 0.313726, 0.0117647, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8ln24")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -62.0
+offset_right = 124.0
+offset_bottom = 62.0
+grow_vertical = 2
+texture = ExtResource("1_bqqt6")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -38.0
+offset_bottom = 68.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_wu84c")
+flip_h = true
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 799.0
+offset_bottom = 380.0
+texture = ExtResource("3_wu84c")
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.5
+offset_top = -91.5
+offset_right = 137.5
+offset_bottom = 91.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="StartButton" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wu84c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8ln24")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wu84c")
+text = "Comenzar"
+
+[node name="QuitButton" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wu84c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tbmy8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jk1qb")
+text = "Salir"
+
+[node name="TitleContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -202.0
+offset_right = 164.0
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TitleContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 80
+text = "FV1-Racing"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="TitleContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 40
+text = "Corre y salta por gemas ¡y tu vida!"
+
+[node name="ControlLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.5
+offset_top = 90.0
+offset_right = 67.5
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 40
+text = "Controles"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -140.0
+offset_right = 138.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 30
+text = "Saltar:"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("6_lgwnu")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 30
+text = "/"
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("7_flqon")
+expand_mode = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -368.5
+offset_top = -81.0
+offset_right = 368.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 30
+text = "Mover a la izquierda:"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("8_rcqid")
+expand_mode = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 30
+text = "/"
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("9_1ajci")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 30
+text = "     Mover a la derecha:"
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("10_7b55j")
+expand_mode = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 30
+text = "/"
+
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("11_5pajh")
+expand_mode = 1
+
+[connection signal="pressed" from="ButtonsContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ButtonsContainer/QuitButton" to="." method="_on_quit_button_pressed"]

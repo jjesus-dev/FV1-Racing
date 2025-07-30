@@ -8,12 +8,17 @@ func game_over() -> void:
 	$ScoreTimer.stop()
 	#$Player.hide()
 	$HUD.show_game_over()
+	
+	# Crea un timer de un solo uso y espera a que termine
+	await get_tree().create_timer(2.0).timeout
+	print("Señal de muerte")
+	get_tree().reload_current_scene()
 
 func spawn_tramp():
 	tramps_count += 1
 
-	# Crear un enemigo cada 12 trampas
-	if (tramps_count % 12 == 0 and tramps_count > 1):
+	# Crear un enemigo cada 8 trampas
+	if (tramps_count % 8 == 0 and tramps_count > 1):
 		prepare_enemy()
 
 	var new_tramp = preload("res://scenes/tramp.tscn").instantiate()
@@ -44,6 +49,7 @@ func new_game() -> void:
 	$HUD.update_score(score)
 	$HUD.show_message("¡Preparate!")
 	$BackgroundEnemy.send_enemy.connect(spawn_enemy)
+	$Player.got_killed.connect(game_over)
 
 func _ready() -> void:
 	new_game()
