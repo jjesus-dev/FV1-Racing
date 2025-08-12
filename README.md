@@ -51,6 +51,15 @@ Marcamos versiones estables del proyecto con las siguientes etiquetas:
 - `git tag`: para crear etiquetas.
 - `git pull` / `git push`: para sincronizar con el repositorio remoto.
 
-## Licencia
+## Licencias
 
 Este proyecto se publica bajo la licencia [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html)
+
+### Assets
+Cada recurso utilizado en este proyecto tiene su licencia correspondiente:
++ [Forest Background (fondo y arboles)](https://saurabhkgp.itch.io/pixel-art-forest-background-simple-seamless-parallax-ready-for-2d-platformer-s) de [saurabhkgp](https://saurabhkgp.itch.io/)
++ [Tiny Hero Sprites (personaje y enemigo)](https://free-game-assets.itch.io/free-tiny-hero-sprites-pixel-art) de [free-game-assets](https://free-game-assets.itch.io/)
++ [Trampas de picos](https://froggu999.itch.io/stabby-spikes) de [froggu999](https://froggu999.itch.io/)
++ [Gemas](https://laredgames.itch.io/gems-coins-free) de [laredgames](https://laredgames.itch.io/)
++ [Fuente/Tipo Letra](https://datagoblin.itch.io/monogram) de [datagoblin](https://datagoblin.itch.io/)
++ [Teclas para los controles en pantalla](https://beamedeighth.itch.io/simplekeys-animated-pixel-keyboard-keys) de [beamedeighth](https://beamedeighth.itch.io/)
